@@ -1,0 +1,25 @@
+{
+  "eslint.codeActionsOnSave.mode": "all",
+  "prettier.enable": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.configPath": "",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/tsconfig.tsbuildinfo": true,
+    "**/node_modules": true
+  },
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "eslint.workingDirectories": [
+    "${workspaceFolder}/src",
+    "${workspaceFolder}/protobuf-gen/telemetry"
+  ],
+  "cSpell.words": ["mavlink", "mavsdk", "Proto", "protobuf"]
+}

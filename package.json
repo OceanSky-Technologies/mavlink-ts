@@ -1,0 +1,35 @@
+{
+  "name": "mavlink-js",
+  "version": "1.0.0",
+  "description": "MAVLINK interface for javascript",
+  "main": "src/test.js",
+  "scripts": {
+    "build": "bash ./generate-protos.bash",
+    "clean": "rm -rf .protobuf protobuf-gen",
+    "test": "vitest",
+    "lint": "eslint",
+    "format": "prettier . --write",
+    "format-check": "prettier . --check",
+    "depcheck": "depcheck"
+  },
+  "keywords": [],
+  "author": "OceanSky Technologies",
+  "license": "",
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "@vitest/coverage-istanbul": "^2.0.5",
+    "depcheck": "^1.4.7",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsdoc": "^50.2.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.11.1",
+    "globals": "^15.9.0",
+    "google-protobuf": "^3.21.4"
+  }
+}
