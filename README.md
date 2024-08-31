@@ -1,6 +1,6 @@
-# mavlink-js
+# mavlink-ts
 
-MAVLINK javascript interface.
+MAVLINK Typescript interface.
 
 ## Usage
 
@@ -24,10 +24,10 @@ Then run
 pnpm install
 ```
 
-Generate new Javascript interface files with protobuf using
+Generate new Typescript interface files with protobuf using
 
 ```bash
-pnpm build # the generated files are found in `protobuf-gen`
+pnpm generate # the generated files are found in `protobuf-gen`
 ```
 
 Afterwards use the interface defined in the `src` folder.
@@ -54,5 +54,6 @@ pnpm clean
 
 ## Protobuf generation
 
-This project is using [grpc-node](https://github.com/grpc/grpc-node/tree/master) to generate the protobuf Javascript interface incl. gRPC bindings using [grpc-js](https://www.npmjs.com/package/@grpc/grpc-js).
+This project is using [protobuf-ts](https://github.com/timostamm/protobuf-ts/tree/main) to generate the protobuf Typescript interface incl. gRPC bindings using [grpcweb-transport](https://github.com/timostamm/protobuf-ts/blob/main/MANUAL.md#grpc-web-transport). This is not a perfect gRPC protocol implementation but the only one that works in a browser as of today. It then needs a proxy server to convert gRPC-web to gRPC.
+
 The code generation happens statically when running `pnpm build` because this removes the need for dynamic code generation when loading the library which increases startup time of the end-user application.

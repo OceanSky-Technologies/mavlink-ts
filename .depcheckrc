@@ -1,3 +1,6 @@
 ignores:
-  - "protoc-gen-js"
-  - "@vitest/coverage-istanbul"
+
+- "@mavlink-ts/*"
+- "@protobuf-gen/*"
+- "typescript"
+- "@vitest/coverage-istanbul"

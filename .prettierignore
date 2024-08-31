@@ -1,3 +1,4 @@
 MAVSDK-Proto
 protobuf-gen
 pnpm-lock.yaml
+.depcheckrc

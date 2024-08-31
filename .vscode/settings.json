@@ -21,5 +21,13 @@
     "${workspaceFolder}/src",
     "${workspaceFolder}/protobuf-gen/telemetry"
   ],
-  "cSpell.words": ["mavlink", "mavsdk", "Proto", "protobuf"]
+  "cSpell.words": [
+    "grpcweb",
+    "mavlink",
+    "mavsdk",
+    "portfinder",
+    "Proto",
+    "protobuf",
+    "tseslint"
+  ]
 }
