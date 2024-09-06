@@ -24,6 +24,7 @@
     "emitDecoratorMetadata": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
     "types": ["vitest", "vitest/globals"],
     "sourceMap": true,
     "outDir": "dist",

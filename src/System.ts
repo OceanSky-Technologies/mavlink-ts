@@ -1,5 +1,5 @@
 import { RpcOptions, RpcTransport } from "@protobuf-ts/runtime-rpc";
-import { TelemetryPlugin } from "./TelemetryPlugin";
+import { TelemetryPlugin } from "./TelemetryPlugin.ts";
 
 /**
  * Class that manages the entire communication to a drone.
@@ -37,14 +37,14 @@ export class System {
    * Connects all services.
    * @param {RpcOptions} options RpcOptions used for all connections
    */
-  connectAll(options?: RpcOptions) {
-    this.telemetry.connectAll(options);
+  connect(options?: RpcOptions) {
+    this.telemetry.connect(options);
   }
 
   /**
    * Disconnects all services.
    */
-  disconnectAll() {
-    this.telemetry.disconnectAll();
+  disconnect() {
+    this.telemetry.disconnect();
   }
 }

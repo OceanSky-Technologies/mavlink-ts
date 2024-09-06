@@ -14,8 +14,10 @@
   "keywords": [],
   "author": "OceanSky Technologies",
   "license": "",
+  "type": "module",
   "devDependencies": {
     "@eslint/js": "^9.9.1",
+    "@protobuf-ts/plugin": "^2.9.4",
     "@vitest/coverage-istanbul": "^2.0.5",
     "depcheck": "^1.4.7",
     "eslint": "^9.9.1",
@@ -26,6 +28,7 @@
     "portfinder": "^1.0.32",
     "prettier": "^3.3.3",
     "typescript-eslint": "^8.3.0",
+    "vite-tsconfig-paths": "^5.0.1",
     "vitest": "^2.0.5"
   },
   "dependencies": {

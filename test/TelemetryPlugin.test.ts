@@ -6,11 +6,18 @@ import { TelemetryPlugin } from "@mavlink-ts/TelemetryPlugin";
 import { GrpcWebFetchTransport } from "@protobuf-ts/grpcweb-transport";
 
 describe("TelemetryPlugin", () => {
-  test("Initialization", async () => {
+  test("Initialization / deinitialization", async () => {
     const port = await getPortPromise();
 
     const plugin = new TelemetryPlugin("localhost" + port);
     expect(plugin.rpcTransport).toBeInstanceOf(GrpcWebFetchTransport);
+
+    expect(plugin.telemetryServiceClient.methods.length).toBeGreaterThan(0);
+    expect(plugin.aborted()).toBeFalsy();
+
+    plugin.disconnect();
+
+    expect(plugin.aborted()).toBeTruthy();
   });
 
   test("Position request / response", async () => {
@@ -40,7 +47,7 @@ describe("TelemetryPlugin", () => {
 
     const telemetryPlugin = new TelemetryPlugin("localhost" + port, transport);
 
-    telemetryPlugin.connectAll();
+    telemetryPlugin.connect();
 
     const responseIterator =
       telemetryPlugin.position?.responses[Symbol.asyncIterator]();
@@ -52,5 +59,7 @@ describe("TelemetryPlugin", () => {
     receivedPosition = await responseIterator?.next(); // Fetch the second message
 
     expect(receivedPosition?.value.position).toEqual(position2);
+
+    telemetryPlugin.disconnect();
   });
 });
