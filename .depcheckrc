@@ -3,4 +3,6 @@ ignores:
 - "@mavlink-ts/*"
 - "@protobuf-gen/*"
 - "typescript"
+- "protoc-gen-ts"
+- "@protobuf-ts/plugin"
 - "@vitest/coverage-istanbul"

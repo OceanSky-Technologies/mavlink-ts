@@ -10,7 +10,7 @@ async function run() {
   // subscribe to telemetry/position data
   console.log("Subscribing to position messages");
 
-  drone.connectAll();
+  drone.connect();
 
   console.log("Waiting for data ...");
 
@@ -46,7 +46,7 @@ async function run() {
   });
 
   console.log("shutdown");
-  drone.disconnectAll();
+  drone.disconnect();
 }
 
 run();
