@@ -35,6 +35,6 @@
     "@protobuf-ts/grpcweb-transport": "^2.9.4",
     "@protobuf-ts/runtime": "^2.9.4",
     "@protobuf-ts/runtime-rpc": "^2.9.4",
-    "typescript": "^5.5.4"
+    "typescript": "^5.6.2"
   }
 }
