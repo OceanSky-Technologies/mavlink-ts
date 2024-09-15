@@ -1,6 +1,10 @@
 import { TelemetryServiceClient } from "@protobuf-gen/telemetry/telemetry.client.ts";
 import {
+  AttitudeAngularVelocityBodyResponse,
+  AttitudeEulerResponse,
   PositionResponse,
+  SubscribeAttitudeAngularVelocityBodyRequest,
+  SubscribeAttitudeEulerRequest,
   SubscribePositionRequest,
 } from "@protobuf-gen/telemetry/telemetry.ts";
 import {
@@ -17,6 +21,17 @@ export class TelemetryPlugin extends PluginBase {
   telemetryServiceClient: TelemetryServiceClient;
   position:
     | ServerStreamingCall<SubscribePositionRequest, PositionResponse>
+    | null
+    | undefined;
+  attitudeEuler:
+    | ServerStreamingCall<SubscribeAttitudeEulerRequest, AttitudeEulerResponse>
+    | null
+    | undefined;
+  attitudeAngularVelocityBody:
+    | ServerStreamingCall<
+        SubscribeAttitudeAngularVelocityBodyRequest,
+        AttitudeAngularVelocityBodyResponse
+      >
     | null
     | undefined;
 
@@ -43,10 +58,35 @@ export class TelemetryPlugin extends PluginBase {
   }
 
   /**
+   * Subscribes to attitude euler data.
+   * @param {RpcOptions} options RpcOptions used for all connections
+   */
+  subscribeAttitudeEuler(options?: RpcOptions) {
+    this.attitudeEuler = this.telemetryServiceClient.subscribeAttitudeEuler(
+      SubscribeAttitudeEulerRequest,
+      options,
+    );
+  }
+
+  /**
+   * Subscribes to attitude euler data.
+   * @param {RpcOptions} options RpcOptions used for all connections
+   */
+  subscribeAttitudeAngularVelocityBody(options?: RpcOptions) {
+    this.attitudeAngularVelocityBody =
+      this.telemetryServiceClient.subscribeAttitudeAngularVelocityBody(
+        SubscribeAttitudeAngularVelocityBodyRequest,
+        options,
+      );
+  }
+
+  /**
    * Connects to all telemetry services.
    * @param {RpcOptions} options RpcOptions used for all connections
    */
   override connect(options?: RpcOptions) {
     this.subscribePosition(options);
+    this.subscribeAttitudeEuler(options);
+    this.subscribeAttitudeAngularVelocityBody(options);
   }
 }
