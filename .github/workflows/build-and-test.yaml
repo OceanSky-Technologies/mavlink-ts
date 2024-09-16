@@ -7,8 +7,9 @@ on:
     types: [checks_requested]
 
 jobs:
+  name: build-and-test
+
   build:
-    name: build-and-test
     runs-on: ubuntu-latest
 
     strategy:
