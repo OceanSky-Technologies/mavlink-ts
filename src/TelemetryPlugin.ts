@@ -1,8 +1,12 @@
 import { TelemetryServiceClient } from "@protobuf-gen/telemetry/telemetry.client.ts";
 import {
+  AltitudeResponse,
   AttitudeAngularVelocityBodyResponse,
   AttitudeEulerResponse,
+  DistanceSensorResponse,
+  HeadingResponse,
   PositionResponse,
+  SubscribeAltitudeRequest,
   SubscribeAttitudeAngularVelocityBodyRequest,
   SubscribeAttitudeEulerRequest,
   SubscribePositionRequest,
@@ -13,6 +17,7 @@ import {
   ServerStreamingCall,
 } from "@protobuf-ts/runtime-rpc";
 import { PluginBase } from "@mavlink-ts/internal/PluginBase.ts";
+import { SubscribeDistanceSensorRequest, SubscribeHeadingRequest } from '../protobuf-gen/telemetry/telemetry';
 
 /**
  * Class to handle all telemetry communication.
@@ -32,6 +37,21 @@ export class TelemetryPlugin extends PluginBase {
         SubscribeAttitudeAngularVelocityBodyRequest,
         AttitudeAngularVelocityBodyResponse
       >
+    | null
+    | undefined;
+  distanceSensor:
+    | ServerStreamingCall<
+        SubscribeDistanceSensorRequest,
+        DistanceSensorResponse
+      >
+    | null
+    | undefined;
+  altitude:
+    | ServerStreamingCall<SubscribeAltitudeRequest, AltitudeResponse>
+    | null
+    | undefined;
+  heading:
+    | ServerStreamingCall<SubscribeHeadingRequest, HeadingResponse>
     | null
     | undefined;
 
@@ -81,6 +101,39 @@ export class TelemetryPlugin extends PluginBase {
   }
 
   /**
+   * Subscribes to distance sensor data.
+   * @param {RpcOptions} options RpcOptions used for all connections
+   */
+  subscribeDistanceSensor(options?: RpcOptions) {
+    this.distanceSensor = this.telemetryServiceClient.subscribeDistanceSensor(
+      SubscribeDistanceSensorRequest,
+      options,
+    );
+  }
+
+  /**
+   * Subscribes to altitude data.
+   * @param {RpcOptions} options RpcOptions used for all connections
+   */
+  subscribeAltitude(options?: RpcOptions) {
+    this.altitude = this.telemetryServiceClient.subscribeAltitude(
+      SubscribeAltitudeRequest,
+      options,
+    );
+  }
+
+  /**
+   * Subscribes to heading data.
+   * @param {RpcOptions} options RpcOptions used for all connections
+   */
+  subscribeHeading(options?: RpcOptions) {
+    this.heading = this.telemetryServiceClient.subscribeHeading(
+      SubscribeHeadingRequest,
+      options,
+    );
+  }
+
+  /**
    * Connects to all telemetry services.
    * @param {RpcOptions} options RpcOptions used for all connections
    */
@@ -88,5 +141,8 @@ export class TelemetryPlugin extends PluginBase {
     this.subscribePosition(options);
     this.subscribeAttitudeEuler(options);
     this.subscribeAttitudeAngularVelocityBody(options);
+    this.subscribeDistanceSensor(options);
+    this.subscribeAltitude(options);
+    this.subscribeHeading(options);
   }
 }
