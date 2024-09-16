@@ -27,4 +27,4 @@ npx protoc \
     $(find ${MAVSDK_PROTOS_FOLDER} -iname "*.proto" -type f)
 
 echo "Finished!"
-exit 0
+exit 1
