@@ -10,6 +10,8 @@ import {
   SubscribeAttitudeAngularVelocityBodyRequest,
   SubscribeAttitudeEulerRequest,
   SubscribePositionRequest,
+  SubscribeDistanceSensorRequest,
+  SubscribeHeadingRequest,
 } from "@protobuf-gen/telemetry/telemetry.ts";
 import {
   RpcOptions,
@@ -17,21 +19,23 @@ import {
   ServerStreamingCall,
 } from "@protobuf-ts/runtime-rpc";
 import { PluginBase } from "@mavlink-ts/internal/PluginBase.ts";
-import { SubscribeDistanceSensorRequest, SubscribeHeadingRequest } from '../protobuf-gen/telemetry/telemetry';
 
 /**
  * Class to handle all telemetry communication.
  */
 export class TelemetryPlugin extends PluginBase {
   telemetryServiceClient: TelemetryServiceClient;
+
   position:
     | ServerStreamingCall<SubscribePositionRequest, PositionResponse>
     | null
     | undefined;
+
   attitudeEuler:
     | ServerStreamingCall<SubscribeAttitudeEulerRequest, AttitudeEulerResponse>
     | null
     | undefined;
+
   attitudeAngularVelocityBody:
     | ServerStreamingCall<
         SubscribeAttitudeAngularVelocityBodyRequest,
@@ -39,6 +43,7 @@ export class TelemetryPlugin extends PluginBase {
       >
     | null
     | undefined;
+
   distanceSensor:
     | ServerStreamingCall<
         SubscribeDistanceSensorRequest,
@@ -46,10 +51,12 @@ export class TelemetryPlugin extends PluginBase {
       >
     | null
     | undefined;
+
   altitude:
     | ServerStreamingCall<SubscribeAltitudeRequest, AltitudeResponse>
     | null
     | undefined;
+
   heading:
     | ServerStreamingCall<SubscribeHeadingRequest, HeadingResponse>
     | null
@@ -137,7 +144,7 @@ export class TelemetryPlugin extends PluginBase {
    * Connects to all telemetry services.
    * @param {RpcOptions} options RpcOptions used for all connections
    */
-  override connect(options?: RpcOptions) {
+  override subscribeAll(options?: RpcOptions) {
     this.subscribePosition(options);
     this.subscribeAttitudeEuler(options);
     this.subscribeAttitudeAngularVelocityBody(options);

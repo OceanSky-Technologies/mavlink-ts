@@ -28,11 +28,11 @@ export abstract class PluginBase {
   }
 
   /**
-   * Connects to all services.
+   * Subscribes to all services.
    * @param {RpcOptions} _options RpcOptions used for all connections
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, class-methods-use-this
-  connect(_options?: RpcOptions) {
+  subscribeAll(_options?: RpcOptions) {
     throw Error("Connect method not implemented");
   }
 
