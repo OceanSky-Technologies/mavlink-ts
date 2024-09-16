@@ -11,6 +11,6 @@ describe("TelemetryPlugin", () => {
 
     const plugin = new TestPlugin("localhost" + port);
 
-    expect(() => plugin.connect()).toThrowError();
+    expect(() => plugin.subscribeAll()).toThrowError();
   });
 });

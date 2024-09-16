@@ -10,7 +10,7 @@ async function run() {
   // subscribe to telemetry/position data
   console.log("Subscribing to position messages");
 
-  drone.connect();
+  drone.subscribeAll();
 
   console.log("Waiting for data ...");
 

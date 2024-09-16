@@ -34,11 +34,11 @@ export class System {
   }
 
   /**
-   * Connects all services.
+   * Subscribes to all services.
    * @param {RpcOptions} options RpcOptions used for all connections
    */
-  connect(options?: RpcOptions) {
-    this.telemetry.connect(options);
+  subscribeAll(options?: RpcOptions) {
+    this.telemetry.subscribeAll(options);
   }
 
   /**

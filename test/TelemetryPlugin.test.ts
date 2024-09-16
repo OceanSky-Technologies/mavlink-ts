@@ -12,6 +12,8 @@ describe("TelemetryPlugin", () => {
     const plugin = new TelemetryPlugin("localhost" + port);
     expect(plugin.rpcTransport).toBeInstanceOf(GrpcWebFetchTransport);
 
+    plugin.subscribeAll();
+
     expect(plugin.telemetryServiceClient.methods.length).toBeGreaterThan(0);
     expect(plugin.aborted()).toBeFalsy();
 
@@ -47,7 +49,7 @@ describe("TelemetryPlugin", () => {
 
     const telemetryPlugin = new TelemetryPlugin("localhost" + port, transport);
 
-    telemetryPlugin.connect();
+    telemetryPlugin.subscribeAll();
 
     const responseIterator =
       telemetryPlugin.position?.responses[Symbol.asyncIterator]();
