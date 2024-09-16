@@ -10,7 +10,7 @@ describe("System", () => {
     const drone = new System("localhost", port);
     expect(drone.getConnectionPath()).toEqual("localhost:" + port);
 
-    drone.connect();
+    drone.subscribeAll();
 
     // Telemetry service client needs to be there, have methods defined and shall not be cancelled
     expect(drone.telemetry.telemetryServiceClient).toBeDefined();
