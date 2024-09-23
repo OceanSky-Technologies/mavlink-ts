@@ -20,7 +20,7 @@
     "@protobuf-ts/plugin": "^2.9.4",
     "@vitest/coverage-istanbul": "^2.1.1",
     "depcheck": "^1.4.7",
-    "eslint": "^9.10.0",
+    "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsdoc": "^50.2.3",
     "eslint-plugin-prettier": "^5.2.1",
