@@ -27,7 +27,7 @@
     "globals": "^15.9.0",
     "portfinder": "^1.0.32",
     "prettier": "^3.3.3",
-    "typescript-eslint": "^8.6.0",
+    "typescript-eslint": "^8.8.0",
     "vite-tsconfig-paths": "^5.0.1",
     "vitest": "^2.1.1"
   },
